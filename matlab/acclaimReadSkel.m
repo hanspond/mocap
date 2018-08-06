@@ -43,7 +43,8 @@ while ~feof(fid)
       %lin = getline(fid);
       lin = strtrim(lin);
       while(lin(1) ~= ':')
-        parts = tokenise(lin, ' ');
+      parts = split(lin); %by HP
+        %parts = tokenise(lin, ' ');
         switch parts{1}
          case 'mass'
           skel.mass = str2num(parts{2});
