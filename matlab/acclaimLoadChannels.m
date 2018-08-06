@@ -16,19 +16,23 @@ function [channels, skel] = acclaimLoadChannels(fileName, skel)
 
 fid=fopen(fileName, 'rt');
 
-lin = getline(fid);
+lin = fgetl(fid); %by HP: this is the newer version
+%lin = getline(fid);
 lin = strtrim(lin);
 while ~strcmp(lin,':DEGREES')
-  lin = getline(fid);
+  lin = fgetl(fid); %by HP: this is the newer version
+   %lin = getline(fid);
   lin = strtrim(lin);
 end
 
 counter = 0;
-lin = getline(fid);
+lin = fgetl(fid); %by HP: this is the newer version
+          %lin = getline(fid);
 
 while lin~=-1
   lin = strtrim(lin);
-  parts = tokenise(lin, ' ');
+  parts = split(lin); %by HP
+  %parts = tokenise(lin, ' ');
   if length(parts)==1
     frameNo = str2num(parts{1});
     if ~isempty(frameNo)
@@ -45,7 +49,8 @@ while lin~=-1
       bone{ind}{frameNo}(i) = str2num(parts{i+1});
     end
   end
-  lin = getline(fid);
+  lin = fgetl(fid); %by HP: this is the newer version
+          %lin = getline(fid);
 end
 fclose(fid);
 numFrames = counter;
