@@ -1,4 +1,4 @@
-Modified by HP 2018086
+#### Modified by HP 2018086
 Change the obsolete *getline* function to a newer *fgetl* function so that the code can be executed in newer version of matlab.
 Usage is the same as original.
 
